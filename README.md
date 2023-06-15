@@ -10,12 +10,15 @@ npm install @react-oauth/google //Para el manejo que hay detrás de las peticion
 
 - /lplan-web/src/pages/home.page
   Dentro de home.page.tsx se han hecho casi todos los cambios necesarios para conseguir que se pueda hacer el login y el Registro en google:
+
   Primero añadimos los imports:
   import { GoogleLogin } from "@react-oauth/google";
   import { v4 as uuidv4 } from "uuid";
   import jwt_decode from "jwt-decode";
   //Primero creamos la función para generar la contraseña:
+
   const [password, setPassword] = useState("");
+  
   const generatePassword = () => {
   const newPassword = uuidv4();
   setPassword(newPassword);
@@ -28,11 +31,9 @@ npm install @react-oauth/google //Para el manejo que hay detrás de las peticion
     Esto nos da un Login/Registro con google con un solo botón
 
     Además de añadir esta función, en el return de la page se añade:
-
-    <div className="google_container" id="signInButton"> 
-        <GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={() => {console.log("Login Failed");}}/>
-    </div>
-
+    GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={() => {console.log("Login Failed");}}
+    
+    Dentro de un div
     Lo que nos genera el botón encargado de hacer la autenticación de Google.
 
 - /lplan-web/src/index.tsx
